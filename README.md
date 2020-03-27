@@ -29,12 +29,12 @@ disciplina Estruturas de Dados).
 
 Os dados mínimos sobre uma música que devem ser informadas pelo usuário são:
 
-● Nome da música
-● Cantor/Cantora
-● Banda/Grupo
-● Nome do álbum (se houver)
-● Gênero da música
-● Ano do lançamento
+1. Nome da música
+2. Cantor/Cantora
+3. Banda/Grupo
+4. Nome do álbum (se houver)
+5. Gênero da música
+6. Ano do lançamento
 
 Músicas devem ser representadas, no programa, como objetos!
 
@@ -54,8 +54,8 @@ anos
 
 O programa deve também oferecer a possibilidade de criar Playlists. Uma Playlist tem
 dois elementos associados a ela: 
-➔ nome da Playlist
-➔ lista de músicas que compõem a Playlist
+1. nome da Playlist
+2. lista de músicas que compõem a Playlist
 
 Playlists devem ser representadas, no programa, como objetos!
 Deve ser possível criar Playlists de duas maneiras:
@@ -73,16 +73,14 @@ Para a implementação das listas podem ser utilizados arrays.
 
 Classe : ListaDeMusica
 Funcionalidade:
-  incluirNoInicio(Musica) // inclui uma música no início da lista
-  incluirNoFim(Musica)    // incluir uma música no final da lista
-  incluirEmOrdem(Musica)  // inclui uma música na lista mantendo a
-                          // ordem alfabética de nome
-  Musica removerDoInicio()// remove uma música do início da lista e retorna
-                          // a música removida
-  Musica removerDoFim()   // remove uma música do final da lista e a retorna
-  int tamanho()           // retorna a quantidade de músicas na lista
-  Musica get(int)         // retorna a música que está na posição da
-                          // lista indicada no argumento
+  1. incluirNoInicio(Musica) // inclui uma música no início da lista
+  2. incluirNoFim(Musica)    // incluir uma música no final da lista
+  3. incluirEmOrdem(Musica)  // inclui uma música na lista mantendo a ordem alfabética de nome                 
+  4. Musica removerDoInicio()// remove uma música do início da lista e retorna  a música removida                  
+  5. Musica removerDoFim()   // remove uma música do final da lista e a retorna
+  6. int tamanho()           // retorna a quantidade de músicas na lista
+  7. Musica get(int)         // retorna a música que está na posição da lista indicada no argumento
+                          
                           
 Classe : ListaDePlaylists
 Funcionalidade:
