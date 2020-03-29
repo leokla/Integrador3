@@ -5,7 +5,7 @@
  */
 package bibliotecademusicas;
 
-import bibliotecademusicas.menuprincipal.Menu;
+import bibliotecademusicas.menuprincipal.MenuPrincipal;
 
 /**
  *
@@ -19,7 +19,7 @@ public class BibliotecaDeMusicas {
     public static void main(String[] args) {
         
         
-        Menu menu = new Menu();
+        MenuPrincipal menu = new MenuPrincipal();
         menu.startMenu();
         
     }

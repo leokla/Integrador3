@@ -5,7 +5,7 @@
  */
 package bibliotecademusicas.util;
 
-import bibliotecademusicas.menuprincipal.Menu;
+import bibliotecademusicas.menuprincipal.MenuPrincipal;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +22,7 @@ public class MensagemErro {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         

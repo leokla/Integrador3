@@ -20,6 +20,9 @@ public class Musica {
     private String genero;
     private Date anoLancamento;
 
+    public Musica() {
+    }
+
     public Musica(String nome, String cantor, String grupo, String album, String genero, Date anoLancamento) {
         this.nome = nome;
         this.cantor = cantor;
