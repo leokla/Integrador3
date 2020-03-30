@@ -16,10 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author Rafael
- */
 public class MenuMusica implements Menu{
 
     public List<Musica> listMusica = new ArrayList<>();
@@ -29,6 +25,7 @@ public class MenuMusica implements Menu{
         
         boolean permanecerMenuMusica = true;
         Scanner scanner = new Scanner(System.in);
+         MenuInsereMusica inseremusica = new MenuInsereMusica();
         do{
            System.out.println("Para cadastrar uma musica informe " + CADASTRAMUSICA);
            System.out.println("Para sair informe " + SAIR); 
@@ -36,6 +33,7 @@ public class MenuMusica implements Menu{
            String in = scanner.nextLine();
            switch(in){
                 case CADASTRAMUSICA:
+                    inseremusica.startMenu();
                     break;
                     
                 case SAIR:

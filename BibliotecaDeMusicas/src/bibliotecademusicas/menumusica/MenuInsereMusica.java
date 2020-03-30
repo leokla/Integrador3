@@ -15,10 +15,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Rafael
- */
+
 public class MenuInsereMusica implements Menu{
 
     private static final String STRING = "STRING";
@@ -34,7 +31,7 @@ public class MenuInsereMusica implements Menu{
             
             Musica musica = new Musica();
             
-            String nome = (String) validarEntrada("Informe o nome da musica: ", true, STRING);
+            String nome = (String) validarEntrada("Informe o nome da música: ", true, STRING);
             musica.setNome(nome);
             
             String cantor = (String) validarEntrada("Informe o cantor(a): ", true, STRING);
@@ -42,15 +39,27 @@ public class MenuInsereMusica implements Menu{
             
             String nomeBanda = (String) validarEntrada("Informen o nome da banda: ", true, STRING);
             musica.setGrupo(nomeBanda);
-            
+
+            String nomeAlbum = (String) validarEntrada("Informen o nome do albúm: ", false, STRING);
+            musica.setGrupo(nomeAlbum);
+
+            String genero = (String) validarEntrada("Informen o gênero da música: ", true, STRING);
+            musica.setGrupo(genero);
+
+            String anoLancamento = (String) validarEntrada("Informe a data de lançamento: ", true, DATE);
+            musica.setGrupo(anoLancamento);
+            break;
+            // Não esta saindo deste while.
         }
         while(permanceMenu);
+
+        new MenuMusica().startMenu();
     }
     
     public Object validarEntrada(String comando, boolean validar, String format){
         
         Scanner scanner = new Scanner(System.in); 
-        String data = "";
+        String data;
         Date date = null;
         do{
             System.out.println(comando);

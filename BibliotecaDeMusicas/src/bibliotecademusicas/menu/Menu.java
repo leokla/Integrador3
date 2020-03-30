@@ -5,10 +5,6 @@
  */
 package bibliotecademusicas.menu;
 
-/**
- *
- * @author Rafael
- */
 public interface Menu {
     
     public void startMenu();

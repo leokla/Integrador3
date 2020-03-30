@@ -7,10 +7,6 @@ package bibliotecademusicas;
 
 import bibliotecademusicas.menuprincipal.MenuPrincipal;
 
-/**
- *
- * @author Rafael
- */
 public class BibliotecaDeMusicas {
 
     /**

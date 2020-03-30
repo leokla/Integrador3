@@ -7,10 +7,7 @@ package bibliotecademusicas.musica;
 
 import java.util.Date;
 
-/**
- *
- * @author Rafael
- */
+
 public class Musica {
     
     private String nome;
