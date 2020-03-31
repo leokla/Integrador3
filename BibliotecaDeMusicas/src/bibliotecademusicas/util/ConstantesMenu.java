@@ -9,12 +9,14 @@ package bibliotecademusicas.util;
  *
  * @author Rafael
  */
-public class ContantesMenu {
+public class ConstantesMenu {
     
     public static final String SAIR = "0";
     public static final String MUSICA = "1"; 
     public static final String PLAYLIST = "2";
     public static final String CADASTRAMUSICA = "3";
+    public static final String SIM = "S";
+    public static final String NAO = "N";
     
     
 }

@@ -7,10 +7,14 @@ package bibliotecademusicas.menumusica;
 
 import bibliotecademusicas.menu.Menu;
 import bibliotecademusicas.musica.Musica;
+import bibliotecademusicas.util.ConstantesMenu;
+import bibliotecademusicas.util.MensagemErro;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +26,33 @@ public class MenuInsereMusica implements Menu{
     private static final String DATE = "DATE";
     private static final String FORMAT_DATE = "dd/MM/yyyy";
     
+    private List<Musica> listMusicasInseridas = new ArrayList<>();
+    private  Scanner scanner = new Scanner(System.in); 
+
+    public List<Musica> getListMusicasInseridas() {
+        return listMusicasInseridas;
+    }
+
+    public void setListMusicasInseridas(List<Musica> listMusicasInseridas) {
+        this.listMusicasInseridas = listMusicasInseridas;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    
+    
+    public List<Musica> getListMusica() {
+        return listMusicasInseridas;
+    }
+
+    public void setListMusica(List<Musica> listMusica) {
+        this.listMusicasInseridas = listMusica;
+    }
     
     @Override
     public void startMenu() {
@@ -31,7 +62,7 @@ public class MenuInsereMusica implements Menu{
             
             Musica musica = new Musica();
             
-            String nome = (String) validarEntrada("Informe o nome da música: ", true, STRING);
+            String nome = (String) validarEntrada("Informe o nome da mï¿½sica: ", true, STRING);
             musica.setNome(nome);
             
             String cantor = (String) validarEntrada("Informe o cantor(a): ", true, STRING);
@@ -40,25 +71,39 @@ public class MenuInsereMusica implements Menu{
             String nomeBanda = (String) validarEntrada("Informen o nome da banda: ", true, STRING);
             musica.setGrupo(nomeBanda);
 
-            String nomeAlbum = (String) validarEntrada("Informen o nome do albúm: ", false, STRING);
+            String nomeAlbum = (String) validarEntrada("Informen o nome do albï¿½m: ", false, STRING);
             musica.setGrupo(nomeAlbum);
 
-            String genero = (String) validarEntrada("Informen o gênero da música: ", true, STRING);
+            String genero = (String) validarEntrada("Informen o gï¿½nero da mï¿½sica: ", true, STRING);
             musica.setGrupo(genero);
 
-            String anoLancamento = (String) validarEntrada("Informe a data de lançamento: ", true, DATE);
-            musica.setGrupo(anoLancamento);
-            break;
-            // Não esta saindo deste while.
+            Date anoLancamento = (Date) validarEntrada("Informe a data de lanï¿½amento: ", true, DATE);
+            musica.setAnoLancamento(anoLancamento);
+            
+            listMusicasInseridas.add(musica);
+            
+            System.out.println("Deseja inserir mais uma musica? (S/N)"); 
+            do{
+                String resp = scanner.nextLine();
+                if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
+                    permanceMenu = false;
+                    break;
+                }
+                else if(resp.equalsIgnoreCase(ConstantesMenu.SIM)){
+                    break;
+                }
+                else{
+                    MensagemErro.imprimeErro();
+                }
+            }while(true);
+           
         }
         while(permanceMenu);
-
-        new MenuMusica().startMenu();
     }
     
     public Object validarEntrada(String comando, boolean validar, String format){
         
-        Scanner scanner = new Scanner(System.in); 
+       
         String data;
         Date date = null;
         do{
@@ -73,8 +118,8 @@ public class MenuInsereMusica implements Menu{
                     validar = false;
                 }
             }        
-            else if(validar && data.equals(DATE)){
-               
+            else if(validar && format.equals(DATE)){
+              
                DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
                try {
                    date = dateFormat.parse(data);
@@ -82,13 +127,15 @@ public class MenuInsereMusica implements Menu{
                } catch (ParseException ex) {
                    System.out.println("Entrada invalida!!");
                }
+               
+                System.out.println(validar);
             } 
         }
         while(validar);
         
         if(format.equals(STRING))
             return data;
-        else if(data.equals(DATE))     
+        else if(format.equals(DATE))     
             return date;
         
         return null;

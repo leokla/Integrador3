@@ -7,9 +7,9 @@ package bibliotecademusicas.menuprincipal;
 
 import bibliotecademusicas.menu.Menu;
 import bibliotecademusicas.menumusica.MenuMusica;
-import static bibliotecademusicas.util.ContantesMenu.MUSICA;
-import static bibliotecademusicas.util.ContantesMenu.PLAYLIST;
-import static bibliotecademusicas.util.ContantesMenu.SAIR;
+import static bibliotecademusicas.util.ConstantesMenu.MUSICA;
+import static bibliotecademusicas.util.ConstantesMenu.PLAYLIST;
+import static bibliotecademusicas.util.ConstantesMenu.SAIR;
 import bibliotecademusicas.util.MensagemErro;
 import java.util.Scanner;
 import java.util.logging.Level;

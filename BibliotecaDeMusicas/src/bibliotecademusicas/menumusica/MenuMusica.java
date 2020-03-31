@@ -7,10 +7,10 @@ package bibliotecademusicas.menumusica;
 
 import bibliotecademusicas.menu.Menu;
 import bibliotecademusicas.musica.Musica;
-import bibliotecademusicas.util.ContantesMenu;
-import static bibliotecademusicas.util.ContantesMenu.CADASTRAMUSICA;
-import static bibliotecademusicas.util.ContantesMenu.PLAYLIST;
-import static bibliotecademusicas.util.ContantesMenu.SAIR;
+import bibliotecademusicas.util.ConstantesMenu;
+import static bibliotecademusicas.util.ConstantesMenu.CADASTRAMUSICA;
+import static bibliotecademusicas.util.ConstantesMenu.PLAYLIST;
+import static bibliotecademusicas.util.ConstantesMenu.SAIR;
 import bibliotecademusicas.util.MensagemErro;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class MenuMusica implements Menu{
 
-    public List<Musica> listMusica = new ArrayList<>();
+    
     
     @Override
     public void startMenu() {
