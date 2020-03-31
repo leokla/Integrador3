@@ -18,6 +18,7 @@ public class ConstantesMenu {
     public static final String SIM = "S";
     public static final String NAO = "N";
     public static final String LISTA_ALFAB_MUSICA = "4";
+    public static final String PESQUISA_GENERO = "5";
     
     
 }

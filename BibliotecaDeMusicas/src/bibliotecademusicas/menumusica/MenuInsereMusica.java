@@ -72,10 +72,10 @@ public class MenuInsereMusica implements Menu{
             musica.setGrupo(nomeBanda);
 
             String nomeAlbum = (String) validarEntrada("Informen o nome do alb�m: ", false, STRING);
-            musica.setGrupo(nomeAlbum);
+            musica.setAlbum(nomeAlbum);
 
             String genero = (String) validarEntrada("Informen o g�nero da m�sica: ", true, STRING);
-            musica.setGrupo(genero);
+            musica.setGenero(genero);
 
             Date anoLancamento = (Date) validarEntrada("Informe a data de lan�amento: ", true, DATE);
             musica.setAnoLancamento(anoLancamento);
@@ -102,7 +102,6 @@ public class MenuInsereMusica implements Menu{
     
     public Object validarEntrada(String comando, boolean validar, String format){
         
-       
         String data;
         Date date = null;
         do{
@@ -154,5 +153,39 @@ public class MenuInsereMusica implements Menu{
                 System.out.println(m.getNome());
             
         }
+    }
+    
+    public void apresentaPorGenero(){
+        
+        boolean permanece = true;
+        do{
+            System.out.println("Informe o genero: ");
+            String genero = scanner.nextLine();
+            boolean encontrouUma = false;
+            for(Musica m : listMusicasInseridas){
+                if(m.getGenero() != null && m.getGenero().equalsIgnoreCase(genero)){
+                    encontrouUma = true;
+                    System.out.println(m.getNome());
+                }    
+            }
+            if(!encontrouUma)
+                System.out.println("Nenhuma musica com o genero!");
+            
+            System.out.println("Deseja pesquisar novamente? (S/N)"); 
+            do{
+                String resp = scanner.nextLine();
+                if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
+                    permanece = false;
+                    break;
+                }
+                else if(resp.equalsIgnoreCase(ConstantesMenu.SIM)){
+                    break;
+                }
+                else{
+                    MensagemErro.imprimeErro();
+                }
+            }while(true);
+            
+        }while(permanece);
     }
 }
