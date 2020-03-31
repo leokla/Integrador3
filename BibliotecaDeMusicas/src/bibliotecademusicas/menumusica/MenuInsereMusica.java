@@ -9,15 +9,15 @@ import bibliotecademusicas.menu.Menu;
 import bibliotecademusicas.musica.Musica;
 import bibliotecademusicas.util.ConstantesMenu;
 import bibliotecademusicas.util.MensagemErro;
+import bibliotecademusicas.util.OrdenaAlfabMusica;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class MenuInsereMusica implements Menu{
@@ -96,7 +96,6 @@ public class MenuInsereMusica implements Menu{
                     MensagemErro.imprimeErro();
                 }
             }while(true);
-           
         }
         while(permanceMenu);
     }
@@ -141,5 +140,19 @@ public class MenuInsereMusica implements Menu{
         return null;
     }
     
-    
+    public void listaMusicaAlfab(){
+        
+        if(listMusicasInseridas.isEmpty()){
+            System.out.println("Nenhuma musica cadastrada!!");
+        }
+        else{
+            
+            List<Musica> tempList = new ArrayList<>();
+            tempList.addAll(listMusicasInseridas);
+            Collections.sort(tempList, new OrdenaAlfabMusica());
+            for(Musica m : tempList)
+                System.out.println(m.getNome());
+            
+        }
+    }
 }

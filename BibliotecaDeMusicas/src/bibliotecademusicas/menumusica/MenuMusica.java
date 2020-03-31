@@ -6,28 +6,35 @@
 package bibliotecademusicas.menumusica;
 
 import bibliotecademusicas.menu.Menu;
-import bibliotecademusicas.musica.Musica;
-import bibliotecademusicas.util.ConstantesMenu;
 import static bibliotecademusicas.util.ConstantesMenu.CADASTRAMUSICA;
-import static bibliotecademusicas.util.ConstantesMenu.PLAYLIST;
+import static bibliotecademusicas.util.ConstantesMenu.LISTA_ALFAB_MUSICA;
 import static bibliotecademusicas.util.ConstantesMenu.SAIR;
 import bibliotecademusicas.util.MensagemErro;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class MenuMusica implements Menu{
 
     
+    private MenuInsereMusica inseremusica = new MenuInsereMusica();
+
+    public MenuInsereMusica getInseremusica() {
+        return inseremusica;
+    }
+
+    public void setInseremusica(MenuInsereMusica inseremusica) {
+        this.inseremusica = inseremusica;
+    }
     
     @Override
     public void startMenu() {
         
         boolean permanecerMenuMusica = true;
         Scanner scanner = new Scanner(System.in);
-         MenuInsereMusica inseremusica = new MenuInsereMusica();
+        
         do{
            System.out.println("Para cadastrar uma musica informe " + CADASTRAMUSICA);
+           System.out.println("Para listar as musicas em ordem alfabetica informe " + LISTA_ALFAB_MUSICA);
            System.out.println("Para sair informe " + SAIR); 
            
            String in = scanner.nextLine();
@@ -38,6 +45,10 @@ public class MenuMusica implements Menu{
                     
                 case SAIR:
                     permanecerMenuMusica = false;
+                    break;
+                
+                case LISTA_ALFAB_MUSICA:
+                    inseremusica.listaMusicaAlfab();
                     break;
                     
                 default:
