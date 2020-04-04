@@ -6,6 +6,7 @@
 package bibliotecademusicas.menumusica;
 
 import bibliotecademusicas.menu.Menu;
+import bibliotecademusicas.menuprincipal.MenuPrincipal;
 import bibliotecademusicas.musica.Musica;
 import bibliotecademusicas.util.ConstantesMenu;
 import bibliotecademusicas.util.MensagemErro;
@@ -86,6 +87,8 @@ public class MenuInsereMusica implements Menu{
             do{
                 String resp = scanner.nextLine();
                 if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
+                    MenuPrincipal.listPersistMusica.addAll(listMusicasInseridas);
+                    listMusicasInseridas.clear();
                     permanceMenu = false;
                     break;
                 }
@@ -141,13 +144,13 @@ public class MenuInsereMusica implements Menu{
     
     public void listaMusicaAlfab(){
         
-        if(listMusicasInseridas.isEmpty()){
+        if(MenuPrincipal.listPersistMusica.isEmpty()){
             System.out.println("Nenhuma musica cadastrada!!");
         }
         else{
             
             List<Musica> tempList = new ArrayList<>();
-            tempList.addAll(listMusicasInseridas);
+            tempList.addAll(MenuPrincipal.listPersistMusica);
             Collections.sort(tempList, new OrdenaAlfabMusica());
             for(Musica m : tempList)
                 System.out.println(m.getNome());
@@ -162,7 +165,7 @@ public class MenuInsereMusica implements Menu{
             System.out.println("Informe o genero: ");
             String genero = scanner.nextLine();
             boolean encontrouUma = false;
-            for(Musica m : listMusicasInseridas){
+            for(Musica m : MenuPrincipal.listPersistMusica){
                 if(m.getGenero() != null && m.getGenero().equalsIgnoreCase(genero)){
                     encontrouUma = true;
                     System.out.println(m.getNome());

@@ -19,6 +19,10 @@ public class ConstantesMenu {
     public static final String NAO = "N";
     public static final String LISTA_ALFAB_MUSICA = "4";
     public static final String PESQUISA_GENERO = "5";
+    public static final String CADASTRAPLAY = "6";
+    public static final String PLAYALEATORIA = "7";
+    public static final String PLAYESCOLHENDO = "8";
+            
     
     
 }
