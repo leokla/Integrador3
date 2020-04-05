@@ -63,7 +63,7 @@ public class MenuInsereMusica implements Menu{
             
             Musica musica = new Musica();
             
-            String nome = (String) validarEntrada("Informe o nome da m�sica: ", true, STRING);
+            String nome = (String) validarEntrada("Informe o nome da musica: ", true, STRING);
             musica.setNome(nome);
             
             String cantor = (String) validarEntrada("Informe o cantor(a): ", true, STRING);
@@ -72,13 +72,13 @@ public class MenuInsereMusica implements Menu{
             String nomeBanda = (String) validarEntrada("Informen o nome da banda: ", true, STRING);
             musica.setGrupo(nomeBanda);
 
-            String nomeAlbum = (String) validarEntrada("Informen o nome do alb�m: ", false, STRING);
+            String nomeAlbum = (String) validarEntrada("Informen o nome do album: ", false, STRING);
             musica.setAlbum(nomeAlbum);
 
-            String genero = (String) validarEntrada("Informen o g�nero da m�sica: ", true, STRING);
+            String genero = (String) validarEntrada("Informen o genero da musica: ", true, STRING);
             musica.setGenero(genero);
 
-            Date anoLancamento = (Date) validarEntrada("Informe a data de lan�amento: ", true, DATE);
+            Date anoLancamento = (Date) validarEntrada("Informe a data de lancamento: ", true, DATE);
             musica.setAnoLancamento(anoLancamento);
             
             listMusicasInseridas.add(musica);
@@ -130,7 +130,7 @@ public class MenuInsereMusica implements Menu{
                    System.out.println("Entrada invalida!!");
                }
                
-                System.out.println(validar);
+               // System.out.println(validar);
             } 
         }
         while(validar);
@@ -143,7 +143,7 @@ public class MenuInsereMusica implements Menu{
         return null;
     }
     
-    public void listaMusicaAlfab(){
+    void listaMusicaAlfab(){
         
         if(MenuPrincipal.listPersistMusica.isEmpty()){
             System.out.println("Nenhuma musica cadastrada!!");
@@ -159,7 +159,7 @@ public class MenuInsereMusica implements Menu{
         }
     }
     
-    public void apresentaPorGenero(){
+    void apresentaPorGenero(){
         
         boolean permanece = true;
         do{
@@ -172,8 +172,7 @@ public class MenuInsereMusica implements Menu{
                     System.out.println(m.getNome());
                 }    
             }
-            if(!encontrouUma)
-                System.out.println("Nenhuma musica com o genero!");
+            if(!encontrouUma)  System.out.println("Nenhuma musica com o genero!");
             
             System.out.println("Deseja pesquisar novamente? (S/N)"); 
             do{
@@ -190,6 +189,38 @@ public class MenuInsereMusica implements Menu{
                 }
             }while(true);
             
+        }while(permanece);
+    }
+    void apresentaPorBanda(){
+
+        boolean permanece = true;
+        do{
+            System.out.println("Informe a banda: ");
+            String banda = scanner.nextLine();
+            boolean encontrouUma = false;
+            for(Musica m : MenuPrincipal.listPersistMusica){
+                if(m.getGrupo() != null && m.getGenero().equalsIgnoreCase(banda)){
+                    encontrouUma = true;
+                    System.out.println(m.getNome());
+                }
+            }
+            if(!encontrouUma)  System.out.println("Nenhuma musica desta banda!");
+
+            System.out.println("Deseja pesquisar novamente? (S/N)");
+            do{
+                String resp = scanner.nextLine();
+                if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
+                    permanece = false;
+                    break;
+                }
+                else if(resp.equalsIgnoreCase(ConstantesMenu.SIM)){
+                    break;
+                }
+                else{
+                    MensagemErro.imprimeErro();
+                }
+            }while(true);
+
         }while(permanece);
     }
 }

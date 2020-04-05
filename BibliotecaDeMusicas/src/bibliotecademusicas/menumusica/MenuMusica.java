@@ -6,10 +6,7 @@
 package bibliotecademusicas.menumusica;
 
 import bibliotecademusicas.menu.Menu;
-import static bibliotecademusicas.util.ConstantesMenu.CADASTRAMUSICA;
-import static bibliotecademusicas.util.ConstantesMenu.LISTA_ALFAB_MUSICA;
-import static bibliotecademusicas.util.ConstantesMenu.PESQUISA_GENERO;
-import static bibliotecademusicas.util.ConstantesMenu.SAIR;
+import static bibliotecademusicas.util.ConstantesMenu.*;
 import bibliotecademusicas.util.MensagemErro;
 
 import java.util.Scanner;
@@ -37,7 +34,8 @@ public class MenuMusica implements Menu{
            System.out.println("Para cadastrar uma musica informe " + CADASTRAMUSICA);
            System.out.println("Para listar as musicas em ordem alfabetica informe " + LISTA_ALFAB_MUSICA);
            System.out.println("Para pesquisar por genero informe " + PESQUISA_GENERO);
-           System.out.println("Para sair informe " + SAIR); 
+           System.out.println("Para pesquisar por banda informe " + PESQUISA_BANDA);
+           System.out.println("Para sair informe " + SAIR);
            
            String in = scanner.nextLine();
            switch(in){
@@ -55,7 +53,10 @@ public class MenuMusica implements Menu{
                 
                 case PESQUISA_GENERO:
                     inseremusica.apresentaPorGenero();
-                    break;    
+                    break;
+                case PESQUISA_BANDA:
+                    inseremusica.apresentaPorBanda();
+                    break;
                     
                 default:
                     MensagemErro.imprimeErro();

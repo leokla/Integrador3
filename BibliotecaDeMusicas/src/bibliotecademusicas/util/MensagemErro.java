@@ -18,7 +18,7 @@ public class MensagemErro {
     
     public static void imprimeErro(){
         
-        System.out.println("Opção inválida!!");
+        System.out.println("Opcao invalida!!");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ex) {

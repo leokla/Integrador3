@@ -78,7 +78,7 @@ public class MenuCadastraPlay implements Menu {
             } while (true);
 
             if (MenuPrincipal.listPersistMusica.isEmpty()) {
-                System.out.println("Não há musicas cadastradas");
+                System.out.println("Nao ha musicas cadastradas");
                 permaneceMenu = false;
             } else {
 
