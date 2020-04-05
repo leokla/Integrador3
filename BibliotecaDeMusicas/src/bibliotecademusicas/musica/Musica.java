@@ -19,15 +19,6 @@ public class Musica {
 
     public Musica() {
     }
-
-    public Musica(String nome, String cantor, String grupo, String album, String genero, Date anoLancamento) {
-        this.nome = nome;
-        this.cantor = cantor;
-        this.grupo = grupo;
-        this.album = album;
-        this.genero = genero;
-        this.anoLancamento = anoLancamento;
-    }
     
     public String getNome() {
         return nome;

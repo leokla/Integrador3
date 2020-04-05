@@ -7,6 +7,7 @@ package bibliotecademusicas.menuprincipal;
 
 import bibliotecademusicas.menu.Menu;
 import bibliotecademusicas.menumusica.MenuMusica;
+import bibliotecademusicas.menuplaylist.MenuPlayList;
 import bibliotecademusicas.musica.Musica;
 import bibliotecademusicas.playlist.PlayList;
 import static bibliotecademusicas.util.ConstantesMenu.MUSICA;
@@ -22,9 +23,7 @@ import java.util.logging.Logger;
 
 public class MenuPrincipal implements Menu{
 
-    
-    public MenuMusica musica;
-    
+
     public static List<PlayList> listPersistPlay = new ArrayList<>();
     public static List<Musica> listPersistMusica = new ArrayList<>();
     
@@ -37,9 +36,10 @@ public class MenuPrincipal implements Menu{
         System.out.println("Iniciando programa");
         boolean perssisteMenu = true;
         Scanner scanner = new Scanner(System.in);
-        
-        musica = new MenuMusica();
-        
+
+        MenuMusica musica = new MenuMusica();
+        MenuPlayList playlist = new MenuPlayList();
+
         do{
             System.out.println("Para menu Musicas informe " + MUSICA);
             System.out.println("Para menu PlayLists informe " + PLAYLIST);
@@ -48,12 +48,11 @@ public class MenuPrincipal implements Menu{
             String in = scanner.nextLine();
             switch(in){
                 case MUSICA:
-                    
-                    
                     musica.startMenu();
                     break;
                     
                 case PLAYLIST:
+                    playlist.startMenu();
                     break;
                     
                 case SAIR:
@@ -61,7 +60,6 @@ public class MenuPrincipal implements Menu{
                     break;
                     
                 default:
-                    
                     MensagemErro.imprimeErro();
             }
             
