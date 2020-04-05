@@ -83,8 +83,9 @@ public class MenuInsereMusica implements Menu{
             
             listMusicasInseridas.add(musica);
             
-            System.out.println("Deseja inserir mais uma musica? (S/N)"); 
+            
             do{
+                System.out.println("Deseja inserir mais uma musica? (S/N)"); 
                 String resp = scanner.nextLine();
                 if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
                     MenuPrincipal.listPersistMusica.addAll(listMusicasInseridas);
