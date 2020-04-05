@@ -35,6 +35,7 @@ public class MenuMusica implements Menu{
            System.out.println("Para listar as musicas em ordem alfabetica informe " + LISTA_ALFAB_MUSICA);
            System.out.println("Para pesquisar por genero informe " + PESQUISA_GENERO);
            System.out.println("Para pesquisar por banda informe " + PESQUISA_BANDA);
+           System.out.println("Para pesquisar por Intervalo de Data informe " + PESQUISA_DATAS);
            System.out.println("Para sair informe " + SAIR);
            
            String in = scanner.nextLine();
@@ -57,14 +58,15 @@ public class MenuMusica implements Menu{
                 case PESQUISA_BANDA:
                     inseremusica.apresentaPorBanda();
                     break;
+                case PESQUISA_DATAS:
+                    inseremusica.apresentaPorEntreDatas();
+                    break;
                     
                 default:
                     MensagemErro.imprimeErro();
             } 
             
         }
-        while(permanecerMenuMusica);    
-        
-        
+        while(permanecerMenuMusica);
     }
 }

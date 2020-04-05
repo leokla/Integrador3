@@ -54,6 +54,8 @@ public class MenuInsereMusica implements Menu{
     public void setListMusica(List<Musica> listMusica) {
         this.listMusicasInseridas = listMusica;
     }
+
+    private DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
     
     @Override
     public void startMenu() {
@@ -104,7 +106,7 @@ public class MenuInsereMusica implements Menu{
         while(permanceMenu);
     }
     
-    public Object validarEntrada(String comando, boolean validar, String format){
+    private Object validarEntrada(String comando, boolean validar, String format){
         
         String data;
         Date date = null;
@@ -121,8 +123,7 @@ public class MenuInsereMusica implements Menu{
                 }
             }        
             else if(validar && format.equals(DATE)){
-              
-               DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
+
                try {
                    date = dateFormat.parse(data);
                    validar = false;
@@ -222,5 +223,65 @@ public class MenuInsereMusica implements Menu{
             }while(true);
 
         }while(permanece);
+    }
+    void apresentaPorEntreDatas(){
+
+        boolean permanece = true;
+        do{
+            Date data1 = null;
+            Date data2 = null;
+            boolean podeBuscar =true;
+            System.out.println("Informe a primeira Data: ");
+            try {
+                data1 =  dateFormat.parse(scanner.nextLine());
+            } catch (ParseException e) {
+                podeBuscar  =false;
+                System.out.println("Entrada invalida!!");
+            }
+            if(podeBuscar){
+                System.out.println("Informe a segunda Data: ");
+                try {
+                    data2 =  dateFormat.parse(scanner.nextLine());
+                } catch (ParseException e) {
+                    podeBuscar = false;
+                    System.out.println("Entrada invalida!!");
+                }
+            }
+
+            if(podeBuscar && data1!=null && data2 != null){
+                if(data2.before(data1)){
+                    System.out.println("A segunda data nao pode ser anterior a primeira data!");
+                }else if(!listouMusicas(data1,data2)){
+                    System.out.println("Nenhuma musica entre as datas informadas!");
+                }
+            }
+
+            System.out.println("Deseja pesquisar novamente? (S/N)");
+            do{
+                String resp = scanner.nextLine();
+                if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
+                    permanece = false;
+                    break;
+                }
+                else if(resp.equalsIgnoreCase(ConstantesMenu.SIM)){
+                    break;
+                }
+                else{
+                    MensagemErro.imprimeErro();
+                }
+            }while(true);
+
+        }while(permanece);
+    }
+
+    private boolean listouMusicas(Date data1, Date data2) {
+        boolean encontrouMusicas = false;
+        for(Musica m : MenuPrincipal.listPersistMusica){
+            if(m.getAnoLancamento().after(data1) && m.getAnoLancamento().before(data2)){
+                encontrouMusicas = true;
+                System.out.println(m.getNome());
+            }
+        }
+        return encontrouMusicas;
     }
 }

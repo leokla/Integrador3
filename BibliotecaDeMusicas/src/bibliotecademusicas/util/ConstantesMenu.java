@@ -20,9 +20,10 @@ public class ConstantesMenu {
     public static final String LISTA_ALFAB_MUSICA = "4";
     public static final String PESQUISA_GENERO = "5";
     public static final String PESQUISA_BANDA = "6";
-    public static final String CADASTRAPLAY = "7";
-    public static final String PLAYALEATORIA = "8";
-    public static final String PLAYESCOLHENDO = "9";
+    public static final String PESQUISA_DATAS = "7";
+    public static final String CADASTRAPLAY = "8";
+    public static final String PLAYALEATORIA = "9";
+    public static final String PLAYESCOLHENDO = "10";
             
     
     
