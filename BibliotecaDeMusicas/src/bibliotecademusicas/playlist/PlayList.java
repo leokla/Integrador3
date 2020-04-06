@@ -8,10 +8,7 @@ package bibliotecademusicas.playlist;
 import bibliotecademusicas.musica.Musica;
 import java.util.ArrayList;
 
-/**
- *
- * @author Rafael
- */
+
 public class PlayList extends ArrayList<Musica>{
     
     private String nome;

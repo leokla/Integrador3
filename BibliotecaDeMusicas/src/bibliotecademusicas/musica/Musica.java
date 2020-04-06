@@ -6,7 +6,6 @@
 package bibliotecademusicas.musica;
 
 import java.util.Date;
-import java.util.List;
 
 
 public class Musica {
@@ -69,5 +68,9 @@ public class Musica {
         this.anoLancamento = anoLancamento;
     }
 
+    @Override
+    public String toString() {
+        return  nome +" - " + cantor + " - " + genero;
+    }
 }
  

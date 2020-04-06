@@ -20,13 +20,13 @@ public class MensagemErro {
         
         System.out.println("Opcao invalida!!");
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
-        for (int i = 0; i < 1000; ++i)  
+        for (int i = 0; i < 5; ++i)
             System.out.println(); 
     }
     

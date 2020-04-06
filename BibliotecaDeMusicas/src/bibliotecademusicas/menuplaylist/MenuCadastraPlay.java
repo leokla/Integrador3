@@ -10,13 +10,14 @@ import bibliotecademusicas.menuprincipal.MenuPrincipal;
 import bibliotecademusicas.musica.Musica;
 import bibliotecademusicas.playlist.PlayList;
 import bibliotecademusicas.util.ConstantesMenu;
-import static bibliotecademusicas.util.ConstantesMenu.PLAYALEATORIA;
-import static bibliotecademusicas.util.ConstantesMenu.PLAYESCOLHENDO;
-import static bibliotecademusicas.util.ConstantesMenu.SAIR;
 import bibliotecademusicas.util.MensagemErro;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static bibliotecademusicas.util.ConstantesMenu.*;
 
 /**
  *
@@ -46,6 +47,7 @@ public class MenuCadastraPlay implements Menu {
                 case PLAYESCOLHENDO:
                     escolhendo();
                     break;
+
                 case SAIR:
                     permaneceMenuPlay = false;
                     break;
@@ -118,7 +120,7 @@ public class MenuCadastraPlay implements Menu {
 
     private void escolhendo() {
 
-        String nome = "";
+        String nome;
 
         List<Musica> listprov = new ArrayList<>();
         listprov.addAll(MenuPrincipal.listPersistMusica);

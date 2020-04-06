@@ -187,6 +187,7 @@ public class MenuInsereMusica implements Menu{
                 }
                 else{
                     MensagemErro.imprimeErro();
+                    System.out.println("Deseja pesquisar novamente? (S/N)");
                 }
             }while(true);
             
@@ -194,7 +195,7 @@ public class MenuInsereMusica implements Menu{
     }
     void apresentaPorBanda(){
 
-        boolean permanece = true;
+        boolean permaneceBusca = true;
         do{
             System.out.println("Informe a banda: ");
             String banda = scanner.nextLine();
@@ -211,18 +212,17 @@ public class MenuInsereMusica implements Menu{
             do{
                 String resp = scanner.nextLine();
                 if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
-                    permanece = false;
+                    permaneceBusca = false;
                     break;
-                }
-                else if(resp.equalsIgnoreCase(ConstantesMenu.SIM)){
+                } else if(resp.equalsIgnoreCase(ConstantesMenu.SIM)){
                     break;
-                }
-                else{
+                } else{
                     MensagemErro.imprimeErro();
+                    System.out.println("Deseja pesquisar novamente? (S/N)");
                 }
             }while(true);
 
-        }while(permanece);
+        }while(permaneceBusca);
     }
     void apresentaPorEntreDatas(){
 
@@ -268,6 +268,7 @@ public class MenuInsereMusica implements Menu{
                 }
                 else{
                     MensagemErro.imprimeErro();
+                    System.out.println("Deseja pesquisar novamente? (S/N)");
                 }
             }while(true);
 

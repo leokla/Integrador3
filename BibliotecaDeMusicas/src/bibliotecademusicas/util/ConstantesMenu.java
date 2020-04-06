@@ -22,9 +22,10 @@ public class ConstantesMenu {
     public static final String PESQUISA_BANDA = "6";
     public static final String PESQUISA_DATAS = "7";
     public static final String CADASTRAPLAY = "8";
-    public static final String PLAYALEATORIA = "9";
-    public static final String PLAYESCOLHENDO = "10";
-            
+    public static final String PLAYBUSCAR= "9";
+    public static final String PLAYALEATORIA = "10";
+    public static final String PLAYESCOLHENDO = "11";
+
     
     
 }

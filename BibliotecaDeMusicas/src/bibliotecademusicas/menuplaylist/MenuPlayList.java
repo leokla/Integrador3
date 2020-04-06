@@ -6,8 +6,11 @@
 package bibliotecademusicas.menuplaylist;
 
 import bibliotecademusicas.menu.Menu;
-import static bibliotecademusicas.util.ConstantesMenu.CADASTRAPLAY;
-import static bibliotecademusicas.util.ConstantesMenu.SAIR;
+import static bibliotecademusicas.util.ConstantesMenu.*;
+
+import bibliotecademusicas.menuprincipal.MenuPrincipal;
+import bibliotecademusicas.musica.Musica;
+import bibliotecademusicas.playlist.PlayList;
 import bibliotecademusicas.util.MensagemErro;
 import java.util.Scanner;
 
@@ -26,23 +29,28 @@ public class MenuPlayList implements Menu{
     public void setCadastraPlay(MenuCadastraPlay cadastraPlay) {
         this.cadastraPlay = cadastraPlay;
     }
-    
+
+    private Scanner scanner = new Scanner(System.in);
     @Override
     public void startMenu() {
-        
-        Scanner scanner = new Scanner(System.in);
+
+
         boolean permaneceMenuPlay = true;
         
         do{
      
             System.out.println("Para cadastrar playlist informe " + CADASTRAPLAY);
+            System.out.println("Para buscar uma playlist pelo nome informe " + PLAYBUSCAR);
             System.out.println("Para sair informe " + SAIR); 
             String in = scanner.nextLine();
            switch(in){
                 case CADASTRAPLAY:
-                    
                     cadastraPlay.startMenu();
                     break;
+
+               case PLAYBUSCAR:
+                   buscarPlaylist();
+                   break;
                     
                 case SAIR:
                     permaneceMenuPlay = false;
@@ -53,5 +61,22 @@ public class MenuPlayList implements Menu{
             } 
         }
         while(permaneceMenuPlay);
+    }
+
+    private void buscarPlaylist(){
+        System.out.println("Informe o nome da Playlist:");
+        String nome = scanner.nextLine();
+        for(PlayList pl: MenuPrincipal.listPersistPlay){
+            if(pl.getNome().equalsIgnoreCase(nome)){
+                System.out.println("==========================================");
+                System.out.println("--" + pl.getNome() + "--");
+                System.out.println("Musicas:");
+                for (Musica m : pl) {
+                    System.out.println(m);
+                }
+                System.out.println("==========================================");
+            }
+        }
+        startMenu();
     }
 }
