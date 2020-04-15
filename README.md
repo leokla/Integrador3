@@ -29,9 +29,8 @@ Neste caso o método “equals” deve retornar true se objeto1 e objeto2 são i
 contrário.
 
 Observações:
-  ● Nesta situação, como objeto1 é o receptor da mensagem, na implementação de equals
-temos acesso a ele usando a variável this.
-  ● Já o objeto2 estará na variável que é o parâmetro do método.
+1. Nesta situação, como objeto1 é o receptor da mensagem, na implementação de equals temos acesso a ele usando a variável this.
+2. Já o objeto2 estará na variável que é o parâmetro do método.
   
 A implementação padrão do método “equals” na classe Object decide se objeto1 e objeto2 são
 iguais comparando as referências que estão nessas duas variáveis (ou seja, verifica se temos o
@@ -48,9 +47,9 @@ programação. Em Java, o mecanismo envolve o uso de objetos que representam a e
 deve ser tratada.
 Implemente, no projeto, o tratamento das seguintes situações usando o mecanismo de
 tratamento de exceções:
-  - Ao inserir um objeto Musica em uma ListaDeMusica, se já há, na lista, outro objeto
+1. Ao inserir um objeto Musica em uma ListaDeMusica, se já há, na lista, outro objeto
 Musica igual ao que está sendo inserido, jogue a exceção ExcecaoDeMusicaJaExistente
-  - Ao remover um objeto Musica de uma ListaDeMusica, se o objeto não é encontrado na
+2. Ao remover um objeto Musica de uma ListaDeMusica, se o objeto não é encontrado na
 lista, jogue a exceção ExcecaoDeMusicaNaoEncontrada
 Observação: use sua implementação de “equals” na classe Musica para verificar as situações
 de exceção!
