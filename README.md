@@ -57,3 +57,17 @@ de exceção!
 Você deve fazer também o tratamento adequado das exceções nas situações em que elas podem
 acontecer. Ou seja, quando os métodos de inserção e remoção de ListaDeMusica são utilizados,
 devem estar em um bloco try{} que implementa os catch() adequados.
+
+
+
+/*Mensagem do Professor*/
+
+**O projeto tem uma organização muito boa e faz uso adequado do modelo de objetos para implementar as entidades do espaço do problema e as funcionalidades solicitadas.
+
+
+
+No entanto, como este projeto integrador deve mobilizar conhecimentos de Programação Orientada a Objetos e Estruturas de Dados, era necessário implementar as classes para listas como solicitado nas orientações e não somente contar com as coleções disponíveis na API do Java…
+
+
+
+Prof. Marcos.**
