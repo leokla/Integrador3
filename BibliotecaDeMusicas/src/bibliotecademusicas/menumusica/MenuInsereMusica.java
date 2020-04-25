@@ -19,6 +19,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MenuInsereMusica implements Menu{
@@ -83,14 +85,20 @@ public class MenuInsereMusica implements Menu{
             Date anoLancamento = (Date) validarEntrada("Informe a data de lancamento: ", true, DATE);
             musica.setAnoLancamento(anoLancamento);
             
-            listMusicasInseridas.add(musica);
             
-            
+            // Tratativa para não inserir musicas duplicadas
+            try {
+                MenuPrincipal.listDeMusicas.existMusica(musica);
+                listMusicasInseridas.add(musica);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+           
             do{
                 System.out.println("Deseja inserir mais uma musica? (S/N)"); 
                 String resp = scanner.nextLine();
                 if(resp.equalsIgnoreCase(ConstantesMenu.NAO)){
-                    MenuPrincipal.listPersistMusica.addAll(listMusicasInseridas);
+                    MenuPrincipal.listDeMusicas.addAll(listMusicasInseridas);
                     listMusicasInseridas.clear();
                     permanceMenu = false;
                     break;
@@ -146,13 +154,13 @@ public class MenuInsereMusica implements Menu{
     
     void listaMusicaAlfab(){
         
-        if(MenuPrincipal.listPersistMusica.isEmpty()){
+        if(MenuPrincipal.listDeMusicas.getListPersistMusica().isEmpty()){
             System.out.println("Nenhuma musica cadastrada!!");
         }
         else{
             
             List<Musica> tempList = new ArrayList<>();
-            tempList.addAll(MenuPrincipal.listPersistMusica);
+            tempList.addAll(MenuPrincipal.listDeMusicas.getListPersistMusica());
             Collections.sort(tempList, new OrdenaAlfabMusica());
             for(Musica m : tempList)
                 System.out.println(m.getNome());
@@ -167,7 +175,7 @@ public class MenuInsereMusica implements Menu{
             System.out.println("Informe o genero: ");
             String genero = scanner.nextLine();
             boolean encontrouUma = false;
-            for(Musica m : MenuPrincipal.listPersistMusica){
+            for(Musica m : MenuPrincipal.listDeMusicas.getListPersistMusica()){
                 if(m.getGenero() != null && m.getGenero().equalsIgnoreCase(genero)){
                     encontrouUma = true;
                     System.out.println(m.getNome());
@@ -200,7 +208,7 @@ public class MenuInsereMusica implements Menu{
             System.out.println("Informe a banda: ");
             String banda = scanner.nextLine();
             boolean encontrouUma = false;
-            for(Musica m : MenuPrincipal.listPersistMusica){
+            for(Musica m :MenuPrincipal.listDeMusicas.getListPersistMusica()){
                 if(m.getGrupo() != null && m.getGenero().equalsIgnoreCase(banda)){
                     encontrouUma = true;
                     System.out.println(m.getNome());
@@ -277,7 +285,7 @@ public class MenuInsereMusica implements Menu{
 
     private boolean listouMusicas(Date data1, Date data2) {
         boolean encontrouMusicas = false;
-        for(Musica m : MenuPrincipal.listPersistMusica){
+        for(Musica m : MenuPrincipal.listDeMusicas.getListPersistMusica()){
             if(m.getAnoLancamento().after(data1) && m.getAnoLancamento().before(data2)){
                 encontrouMusicas = true;
                 System.out.println(m.getNome());

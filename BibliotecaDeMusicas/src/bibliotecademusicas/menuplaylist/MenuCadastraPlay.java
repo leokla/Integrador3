@@ -79,22 +79,22 @@ public class MenuCadastraPlay implements Menu {
                 }
             } while (true);
 
-            if (MenuPrincipal.listPersistMusica.isEmpty()) {
+            if (MenuPrincipal.listDeMusicas.getListPersistMusica().isEmpty()) {
                 System.out.println("Nao ha musicas cadastradas");
                 permaneceMenu = false;
             } else {
 
                 PlayList list = new PlayList(nome);
 
-                if (MenuPrincipal.listPersistMusica.size() < qtd) {
+                if (MenuPrincipal.listDeMusicas.getListPersistMusica().size() < qtd) {
                     System.out.println("Não há esta quantidade de musicas disponiveis ");
-                    System.out.println("Serão adicionadas " + MenuPrincipal.listPersistMusica.size());
+                    System.out.println("Serão adicionadas " + MenuPrincipal.listDeMusicas.getListPersistMusica().size());
 
-                    qtd = MenuPrincipal.listPersistMusica.size();
+                    qtd = MenuPrincipal.listDeMusicas.getListPersistMusica().size();
                 }
 
                 for (int i = 0; i < qtd; i++) {
-                    list.add(MenuPrincipal.listPersistMusica.get(i));
+                    list.add(MenuPrincipal.listDeMusicas.getListPersistMusica().get(i));
                 }
 
                 listPlay.add(list);
@@ -123,14 +123,14 @@ public class MenuCadastraPlay implements Menu {
         String nome;
 
         List<Musica> listprov = new ArrayList<>();
-        listprov.addAll(MenuPrincipal.listPersistMusica);
+        listprov.addAll(MenuPrincipal.listDeMusicas.getListPersistMusica());
         boolean permaneceMenu = true;
         do {
 
             System.out.println("Infome o nome da playlist");
             nome = scanner.nextLine();
 
-            if (MenuPrincipal.listPersistMusica.isEmpty()) {
+            if (MenuPrincipal.listDeMusicas.getListPersistMusica().isEmpty()) {
                 System.out.println("Não há musicas cadastradas");
                 permaneceMenu = false;
             } else {

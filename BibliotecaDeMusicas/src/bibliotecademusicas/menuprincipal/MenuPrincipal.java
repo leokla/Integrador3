@@ -8,6 +8,7 @@ package bibliotecademusicas.menuprincipal;
 import bibliotecademusicas.menu.Menu;
 import bibliotecademusicas.menumusica.MenuMusica;
 import bibliotecademusicas.menuplaylist.MenuPlayList;
+import bibliotecademusicas.musica.ListDeMusicas;
 import bibliotecademusicas.musica.Musica;
 import bibliotecademusicas.playlist.PlayList;
 import static bibliotecademusicas.util.ConstantesMenu.MUSICA;
@@ -25,7 +26,8 @@ public class MenuPrincipal implements Menu{
 
 
     public static List<PlayList> listPersistPlay = new ArrayList<>();
-    public static List<Musica> listPersistMusica = new ArrayList<>();
+    //public static List<Musica> listPersistMusica = new ArrayList<>();
+    public static ListDeMusicas listDeMusicas = new ListDeMusicas();
     
     public MenuPrincipal() {
     }
