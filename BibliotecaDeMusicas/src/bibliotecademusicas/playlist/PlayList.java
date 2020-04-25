@@ -24,4 +24,12 @@ public class PlayList extends ArrayList<Musica>{
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        return "PlayList{" + "nome= " + nome + '}';
+    }
+    
+    
+   
 }
