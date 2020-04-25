@@ -7,6 +7,7 @@ package bibliotecademusicas.playlist;
 
 import bibliotecademusicas.musica.Musica;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class PlayList extends ArrayList<Musica>{
@@ -29,7 +30,19 @@ public class PlayList extends ArrayList<Musica>{
     public String toString() {
         return "PlayList{" + "nome= " + nome + '}';
     }
-    
-    
-   
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PlayList other = (PlayList) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
+    }  
 }
