@@ -55,9 +55,11 @@ public class ListDeMusicas {
     }
 
     public void existMusica(Musica m) throws ExcecaoDeMusicaJaExistente {
-        for(Musica m1 : musicas){
-            if(m1.equals(m))
-                throw new ExcecaoDeMusicaJaExistente("Musica já existe");
+        if(proximoLivre>0){
+            for(Musica m1 : musicas){
+                if(m1.equals(m))
+                    throw new ExcecaoDeMusicaJaExistente("A Musica ja existe!!");
+            }
         }
     }
 
