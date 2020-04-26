@@ -5,12 +5,13 @@
  */
 package bibliotecademusicas.playlist;
 
+import bibliotecademusicas.musica.ListDeMusicas;
 import bibliotecademusicas.musica.Musica;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class PlayList extends ArrayList<Musica>{
+public class PlayList extends ListDeMusicas {
     
     private String nome;
 

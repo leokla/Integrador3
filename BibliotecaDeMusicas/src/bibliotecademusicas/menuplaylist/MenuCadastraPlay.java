@@ -5,13 +5,15 @@
  */
 package bibliotecademusicas.menuplaylist;
 
+import bibliotecademusicas.exceptions.ExcecaoDeListaCheia;
+import bibliotecademusicas.exceptions.ExcecaoDeMusicaNaoEncontrada;
 import bibliotecademusicas.menu.Menu;
 import bibliotecademusicas.menuprincipal.MenuPrincipal;
+import bibliotecademusicas.musica.ListDeMusicas;
 import bibliotecademusicas.musica.Musica;
 import bibliotecademusicas.playlist.PlayList;
 import bibliotecademusicas.util.ConstantesMenu;
 import bibliotecademusicas.util.MensagemErro;
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,22 +81,26 @@ public class MenuCadastraPlay implements Menu {
                 }
             } while (true);
 
-            if (MenuPrincipal.listDeMusicas.getListPersistMusica().isEmpty()) {
+            if (MenuPrincipal.listDeMusicas.isEmpty()) {
                 System.out.println("Nao ha musicas cadastradas");
                 permaneceMenu = false;
             } else {
 
                 PlayList list = new PlayList(nome);
 
-                if (MenuPrincipal.listDeMusicas.getListPersistMusica().size() < qtd) {
+                if (MenuPrincipal.listDeMusicas.tamanho() < qtd) {
                     System.out.println("Não há esta quantidade de musicas disponiveis ");
-                    System.out.println("Serão adicionadas " + MenuPrincipal.listDeMusicas.getListPersistMusica().size());
+                    System.out.println("Serão adicionadas " + MenuPrincipal.listDeMusicas.tamanho());
 
-                    qtd = MenuPrincipal.listDeMusicas.getListPersistMusica().size();
+                    qtd = MenuPrincipal.listDeMusicas.tamanho();
                 }
 
                 for (int i = 0; i < qtd; i++) {
-                    list.add(MenuPrincipal.listDeMusicas.getListPersistMusica().get(i));
+                    try {
+                        list.incluirNoFim(MenuPrincipal.listDeMusicas.getListMusica()[i]);
+                    } catch (ExcecaoDeListaCheia listaCheia) {
+                        System.out.println(listaCheia.getMessage());;
+                    }
                 }
 
                 listPlay.add(list);
@@ -122,15 +128,14 @@ public class MenuCadastraPlay implements Menu {
 
         String nome;
 
-        List<Musica> listprov = new ArrayList<>();
-        listprov.addAll(MenuPrincipal.listDeMusicas.getListPersistMusica());
+        ListDeMusicas listprov = MenuPrincipal.listDeMusicas;
         boolean permaneceMenu = true;
         do {
 
             System.out.println("Infome o nome da playlist");
             nome = scanner.nextLine();
 
-            if (MenuPrincipal.listDeMusicas.getListPersistMusica().isEmpty()) {
+            if (MenuPrincipal.listDeMusicas.isEmpty()) {
                 System.out.println("Não há musicas cadastradas");
                 permaneceMenu = false;
             } else {
@@ -141,7 +146,7 @@ public class MenuCadastraPlay implements Menu {
                 do {
                     System.out.println("Escolha as musicas ");
                     int i = 1;
-                    for (Musica m : listprov) {
+                    for (Musica m : listprov.getListMusica()) {
                         System.out.println(i + " - " + m.getNome());
                         i++;
                     }
@@ -155,7 +160,7 @@ public class MenuCadastraPlay implements Menu {
                             System.out.println("Indice invalido");
                         }
                         
-                        if(indice <= 0 || indice > listprov.size()){   
+                        if(indice <= 0 || indice > listprov.tamanho()){
                            System.out.println("Indice invalido"); 
                         }
                         else{
@@ -163,10 +168,14 @@ public class MenuCadastraPlay implements Menu {
                         }  
                     } while (true);
 
-                    Musica m = listprov.get(indice-1);
-                    list.add(m);
-                    listprov.remove(m);
-                    
+                    Musica m = listprov.getListMusica()[indice-1];
+                    try {
+                        list.incluirNoFim(m);
+                        listprov.removeMusica(m);
+                    } catch (ExcecaoDeListaCheia | ExcecaoDeMusicaNaoEncontrada ex) {
+                        System.out.println();
+                    }
+
                     do {
                         System.out.println("Deseja incluir mais uma musica? (S/N) ");
                         String resp = scanner.nextLine();

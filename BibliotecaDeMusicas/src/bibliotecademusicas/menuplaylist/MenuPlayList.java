@@ -71,7 +71,7 @@ public class MenuPlayList implements Menu{
                 System.out.println("==========================================");
                 System.out.println("--" + pl.getNome() + "--");
                 System.out.println("Musicas:");
-                for (Musica m : pl) {
+                for (Musica m : pl.getListMusica()) {
                     System.out.println(m);
                 }
                 System.out.println("==========================================");
