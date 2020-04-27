@@ -70,7 +70,13 @@ public class ListDeMusicas {
         return tamanho() ==0;
     }
     public Musica[] getListMusica() {
-        return musicas;
+        Musica[] listaLimpa = new Musica[tamanho()];
+        for (int i =0; i <= tamanho(); i++){
+            if(musicas[i] != null){
+                listaLimpa[i] = musicas[i];
+            }
+        }
+        return listaLimpa;
     }
     public int tamanho(){ return this.proximoLivre;}
 }

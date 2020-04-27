@@ -14,10 +14,7 @@ import bibliotecademusicas.playlist.PlayList;
 import bibliotecademusicas.util.MensagemErro;
 import java.util.Scanner;
 
-/**
- *
- * @author Rafael
- */
+
 public class MenuPlayList implements Menu{
 
     private MenuCadastraPlay cadastraPlay = new MenuCadastraPlay();
