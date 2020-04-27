@@ -10,10 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Rafael
- */
+
 public class MensagemErro {
     
     public static void imprimeErro(){

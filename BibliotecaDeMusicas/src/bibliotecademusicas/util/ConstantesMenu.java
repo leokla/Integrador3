@@ -5,10 +5,7 @@
  */
 package bibliotecademusicas.util;
 
-/**
- *
- * @author Rafael
- */
+
 public class ConstantesMenu {
     
     public static final String SAIR = "0";

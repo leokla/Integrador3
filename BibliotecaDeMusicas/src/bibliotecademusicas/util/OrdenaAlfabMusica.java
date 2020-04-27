@@ -8,10 +8,7 @@ package bibliotecademusicas.util;
 import bibliotecademusicas.musica.Musica;
 import java.util.Comparator;
 
-/**
- *
- * @author Rafael
- */
+
 public class OrdenaAlfabMusica implements Comparator<Musica>{
 
     @Override
