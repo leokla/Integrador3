@@ -57,7 +57,6 @@ public class MenuInsereMusica implements Menu{
             
             
             // Tratativa para não inserir musicas duplicadas
-            System.out.println(MenuPrincipal.listDeMusicas.tamanho());
             try {
                 MenuPrincipal.listDeMusicas.existMusica(musica);
                 MenuPrincipal.listDeMusicas.incluirNoFim(musica);
