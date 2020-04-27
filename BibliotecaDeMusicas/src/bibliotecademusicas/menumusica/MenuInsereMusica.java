@@ -57,6 +57,7 @@ public class MenuInsereMusica implements Menu{
             
             
             // Tratativa para não inserir musicas duplicadas
+            System.out.println(MenuPrincipal.listDeMusicas.tamanho());
             try {
                 MenuPrincipal.listDeMusicas.existMusica(musica);
                 MenuPrincipal.listDeMusicas.incluirNoFim(musica);
@@ -142,7 +143,7 @@ public class MenuInsereMusica implements Menu{
             String genero = scanner.nextLine();
             boolean encontrouUma = false;
             for(Musica m : MenuPrincipal.listDeMusicas.getListMusica()){
-                if(m.getGenero() != null && m.getGenero().equalsIgnoreCase(genero)){
+                if(m != null && m.getGenero().equalsIgnoreCase(genero)){
                     encontrouUma = true;
                     System.out.println(m.getNome());
                 }    
@@ -175,7 +176,7 @@ public class MenuInsereMusica implements Menu{
             String banda = scanner.nextLine();
             boolean encontrouUma = false;
             for(Musica m :MenuPrincipal.listDeMusicas.getListMusica()){
-                if(m.getGrupo() != null && m.getGenero().equalsIgnoreCase(banda)){
+                if(m != null && m.getGenero().equalsIgnoreCase(banda)){
                     encontrouUma = true;
                     System.out.println(m.getNome());
                 }
@@ -252,9 +253,11 @@ public class MenuInsereMusica implements Menu{
     private boolean listouMusicas(Date data1, Date data2) {
         boolean encontrouMusicas = false;
         for(Musica m : MenuPrincipal.listDeMusicas.getListMusica()){
-            if(m.getAnoLancamento().after(data1) && m.getAnoLancamento().before(data2)){
-                encontrouMusicas = true;
-                System.out.println(m.getNome());
+            if(m!=null){
+                if(m.getAnoLancamento().after(data1) && m.getAnoLancamento().before(data2)){
+                    encontrouMusicas = true;
+                    System.out.println(m.getNome());
+                }
             }
         }
         return encontrouMusicas;

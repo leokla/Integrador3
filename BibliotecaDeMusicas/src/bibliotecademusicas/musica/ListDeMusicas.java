@@ -9,6 +9,7 @@ package bibliotecademusicas.musica;
 import bibliotecademusicas.exceptions.ExcecaoDeListaCheia;
 import bibliotecademusicas.exceptions.ExcecaoDeMusicaJaExistente;
 import bibliotecademusicas.exceptions.ExcecaoDeMusicaNaoEncontrada;
+import bibliotecademusicas.menuprincipal.MenuPrincipal;
 
 public class ListDeMusicas {
 
@@ -57,14 +58,16 @@ public class ListDeMusicas {
     public void existMusica(Musica m) throws ExcecaoDeMusicaJaExistente {
         if(proximoLivre>0){
             for(Musica m1 : musicas){
-                if(m1.equals(m))
-                    throw new ExcecaoDeMusicaJaExistente("A Musica ja existe!!");
+                if(m1!=null){
+                    if(m1.equals(m))
+                        throw new ExcecaoDeMusicaJaExistente("A Musica ja existe!!");
+                }
             }
         }
     }
 
     public boolean isEmpty(){
-        return musicas.length ==0;
+        return tamanho() ==0;
     }
     public Musica[] getListMusica() {
         return musicas;
